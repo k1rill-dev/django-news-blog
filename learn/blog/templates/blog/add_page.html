@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+{% block post %}
+<h1>{{title}}</h1>
+<form action="{%url 'add_page'%}" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    <div class="form-error"> {{form.non_field_errors}} </div>
+<!--    {{form.as_p}}-->
+<!--    <p><label class="form-label" for="{{from.title.id_for_label}}">{{form.title.label}}</label>{{form.title}}</p>-->
+<!--    <div class="from-error">{{form.title.errors}}</div>-->
+<!--    <p><label class="form-label" for="{{from.slug.id_for_label}}">{{form.slug.label}}</label>{{form.slug}}</p>-->
+<!--    <div class="from-error">{{form.slug.errors}}</div>-->
+<!--    <p><label class="form-label" for="{{from.content.id_for_label}}">{{form.content.label}}</label>{{form.content}}</p>-->
+<!--    <div class="from-error">{{form.content.errors}}</div>-->
+<!--    <p><label class="form-label" for="{{from.is_published.id_for_label}}">{{form.is_published.label}}</label>{{form.is_published}}</p>-->
+<!--    <div class="from-error">{{form.is_published.errors}}</div>-->
+<!--    <p><label class="form-label" for="{{from.category_id.id_for_label}}">{{form.category.label}}</label>{{form.category}}</p>-->
+<!--    <div class="from-error">{{form.category.errors}}</div>-->
+    {%for f in form%}
+    <p><label class="form-label" for="{{f.id_for_label}}">{{f.label}}</label>{{f}}</p>
+    <div class="from-error">{{f.errors}}</div>
+    {%endfor%}
+    <button type="submit">Добавить</button>
+</form>
+{% endblock %}
